@@ -167,7 +167,6 @@ class Charge implements ArrayAccess
     const ERROR_ACQUIRER_CONFIGURATION_ERROR = 'acquirer_configuration_error';
     const ERROR_ACQUIRER_REJECTED_ERROR = 'acquirer_rejected_error';
     const ERROR_ACQUIRER_AUTHENTICATION_ERROR = 'acquirer_authentication_error';
-    const ERROR_CARD_IDENTIFIER_NOT_FOUND = 'card_identifier_not_found';
     const ERROR_INSUFFICIENT_FUNDS = 'insufficient_funds';
     const ERROR_REFUND_AMOUNT_TOO_HIGH = 'refund_amount_too_high';
     const ERROR_CREDIT_CARD_LOST_OR_STOLEN = 'credit_card_lost_or_stolen';

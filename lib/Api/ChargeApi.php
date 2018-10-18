@@ -389,7 +389,7 @@ class ChargeApi
             throw new \InvalidArgumentException('Missing the required parameter $handle when calling settleCharge');
         }
         // parse inputs
-        $resourcePath = "/v1/charge/{handle}";
+        $resourcePath = "/v1/charge/{handle}/settle";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -432,7 +432,7 @@ class ChargeApi
                 $httpBody,
                 $headerParams,
                 '\Reepay\Model\Charge',
-                '/v1/charge/{handle}'
+                '/v1/charge/{handle}/settle'
             );
 
             return [$this->apiClient->getSerializer()->deserialize($response, '\Reepay\Model\Charge', $httpHeader), $statusCode, $httpHeader];
