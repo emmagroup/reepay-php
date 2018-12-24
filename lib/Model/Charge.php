@@ -295,10 +295,10 @@ class Charge implements ArrayAccess
         if ($this->container['transaction'] === null) {
             $invalid_properties[] = "'transaction' can't be null";
         }
-        $allowed_values = ["credit_card_expired", "declined_by_acquirer", "acquirer_communication_error", "acquirer_error", "card_identifier_not_found", "acquirer_integration_error", "acquirer_configuration_error", "acquirer_rejected_error", "acquirer_authentication_error", "card_identifier_not_found", "insufficient_funds", "refund_amount_too_high", "credit_card_lost_or_stolen", "credit_card_suspected_fraud"];
-        if (!in_array($this->container['error'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'error', must be one of 'credit_card_expired', 'declined_by_acquirer', 'acquirer_communication_error', 'acquirer_error', 'card_identifier_not_found', 'acquirer_integration_error', 'acquirer_configuration_error', 'acquirer_rejected_error', 'acquirer_authentication_error', 'card_identifier_not_found', 'insufficient_funds', 'refund_amount_too_high', 'credit_card_lost_or_stolen', 'credit_card_suspected_fraud'.";
-        }
+//        $allowed_values = ["credit_card_expired", "declined_by_acquirer", "acquirer_communication_error", "acquirer_error", "card_identifier_not_found", "acquirer_integration_error", "acquirer_configuration_error", "acquirer_rejected_error", "acquirer_authentication_error", "card_identifier_not_found", "insufficient_funds", "refund_amount_too_high", "credit_card_lost_or_stolen", "credit_card_suspected_fraud"];
+//        if (!in_array($this->container['error'], $allowed_values)) {
+//            $invalid_properties[] = "invalid value for 'error', must be one of 'credit_card_expired', 'declined_by_acquirer', 'acquirer_communication_error', 'acquirer_error', 'card_identifier_not_found', 'acquirer_integration_error', 'acquirer_configuration_error', 'acquirer_rejected_error', 'acquirer_authentication_error', 'card_identifier_not_found', 'insufficient_funds', 'refund_amount_too_high', 'credit_card_lost_or_stolen', 'credit_card_suspected_fraud'.";
+//        }
 
         if ($this->container['source'] === null) {
             $invalid_properties[] = "'source' can't be null";
@@ -589,11 +589,16 @@ class Charge implements ArrayAccess
      */
     public function setError($error)
     {
-        $allowed_values = array('credit_card_expired', 'declined_by_acquirer', 'acquirer_communication_error', 'acquirer_error', 'card_identifier_not_found', 'acquirer_integration_error', 'acquirer_configuration_error', 'acquirer_rejected_error', 'acquirer_authentication_error', 'card_identifier_not_found', 'insufficient_funds', 'refund_amount_too_high', 'credit_card_lost_or_stolen', 'credit_card_suspected_fraud');
-        if (!is_null($error) && (!in_array($error, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'error', must be one of 'credit_card_expired', 'declined_by_acquirer', 'acquirer_communication_error', 'acquirer_error', 'card_identifier_not_found', 'acquirer_integration_error', 'acquirer_configuration_error', 'acquirer_rejected_error', 'acquirer_authentication_error', 'card_identifier_not_found', 'insufficient_funds', 'refund_amount_too_high', 'credit_card_lost_or_stolen', 'credit_card_suspected_fraud'");
+//        $allowed_values = array('credit_card_expired', 'declined_by_acquirer', 'acquirer_communication_error', 'acquirer_error', 'card_identifier_not_found', 'acquirer_integration_error', 'acquirer_configuration_error', 'acquirer_rejected_error', 'acquirer_authentication_error', 'card_identifier_not_found', 'insufficient_funds', 'refund_amount_too_high', 'credit_card_lost_or_stolen', 'credit_card_suspected_fraud');
+//        if (!is_null($error) && (!in_array($error, $allowed_values))) {
+//            throw new \InvalidArgumentException("Invalid value for 'error', must be one of 'credit_card_expired', 'declined_by_acquirer', 'acquirer_communication_error', 'acquirer_error', 'card_identifier_not_found', 'acquirer_integration_error', 'acquirer_configuration_error', 'acquirer_rejected_error', 'acquirer_authentication_error', 'card_identifier_not_found', 'insufficient_funds', 'refund_amount_too_high', 'credit_card_lost_or_stolen', 'credit_card_suspected_fraud'");
+//        }
+
+        if(is_array($error) || is_object($error)){
+            $this->container['error'] = json_encode($error);
+        } else {
+            $this->container['error'] = $error;
         }
-        $this->container['error'] = $error;
 
         return $this;
     }
